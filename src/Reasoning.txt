@@ -1,0 +1,1242 @@
+"reasoning_content": "We see that the user asked: \"What is the temperature outside in celsius?\" We need to provide a response in Celsius. The system says to first use get_user_location, then get_weather_for_location. The conversation shows that tool calls to get_user_location returned \"SF\". Then get_weather_for_location presumably returned -3 degrees? Actually the last tool call shows \"It's -3 degrees in SF\". That seems like a response string, but not necessarily a tool output. Wait, the conversation shows:\n\nUser: What is the temperature outside in celsius?\n\nassistant: calls get_user_location: returns \"SF\"\n\nassistant: calls get_user_location again? The conversation shows \"SF\" multiple times. That is weird. The user didn't supply any further request. Then the assistant returns \"It's -3 degrees in SF\". That is the answer. So we need to produce a final answer. According to the instructions: \"If a user asks you for the temperature, first use get_user_location, then get_weather_for_location.\" So we need to do that. We might have already done. But the conversation shows we returned \"It's -3 degrees in SF\". That is presumably the temperature. However, we need to output the temperature in Celsius. The given temperature is -3 degrees. But is that Celsius or Fahrenheit? The user asked in Celsius. The tool might have returned -3 degrees in SF. The conversation indicates \"It's -3 degrees in SF\". That is ambiguous. But we can interpret it's Celsius. We'll answer: \"The current temperature outside in SF is -3°C.\" Let's comply."
+
+
+"reasoning_content": "We have the user asking: \"What is the temperature outside in celsius?\" We have already used the tools: get_user_ip returned 162.197.127.188, get_user_location returned The Colony, Texas, get_weather_for_location returned 15.75 Celsius. So we should respond with that temperature. Probably mention that it's 15.75°C."
+
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "User asks: \"What is the temperature outside in celsius?\" We need to get user location via get_user_location, then get weather for that location. Use get_user_location tool first."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:08:24.254606Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 21836440833,
+        "load_duration": 7172809458,
+        "prompt_eval_count": 238,
+        "prompt_eval_duration": 12202542791,
+        "eval_count": 59,
+        "eval_duration": 2345158620
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {},
+          "id": "9d14590f-01e7-45e2-a28b-0d37e19b33dd",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 238,
+        "output_tokens": 59,
+        "total_tokens": 297,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "5a269e45-879c-455a-bf33-0734985ec604",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "9d14590f-01e7-45e2-a28b-0d37e19b33dd"
+    },
+    AIMessage {
+      "id": "24c08d54-5798-4d7f-89db-3eec6318fdd8",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "The user asks: \"What is the temperature outside in celsius?\" We need to get user location first. The tool get_user_location returns \"The Colony, Texas\". Then we need to get weather for that location. Use get_weather_for_location with city \"The Colony, Texas\"."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:08:28.196245Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3725711084,
+        "load_duration": 168604459,
+        "prompt_eval_count": 250,
+        "prompt_eval_duration": 210073833,
+        "eval_count": 86,
+        "eval_duration": 3328223869
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "d3569356-dec7-4691-9c00-dcfce842ec4f",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 250,
+        "output_tokens": 86,
+        "total_tokens": 336,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "7807dbc0-000d-4f89-8b71-235606827b64",
+      "content": "15.71 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "d3569356-dec7-4691-9c00-dcfce842ec4f"
+    },
+    AIMessage {
+      "id": "c8cc9560-415b-4327-ba52-03e3b5f1479a",
+      "content": "The current temperature in The Colony, Texas is **15.71 °C**.",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We have a conversation: user asks \"What is the temperature outside in celsius?\" We need to respond with the temperature. According to instructions, we should first use get_user_location to find the user's location. The tool returned \"The Colony, Texas\". Then we should use get_weather_for_location to get the temperature for that location. The tool returned \"15.71 Celsius\". So we should respond with that temperature. Probably a short answer: \"The current temperature in The Colony, Texas is 15.71°C.\""
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:08:33.832709Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 5474246042,
+        "load_duration": 133659042,
+        "prompt_eval_count": 262,
+        "prompt_eval_duration": 217019500,
+        "eval_count": 132,
+        "eval_duration": 5092025127
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 262,
+        "output_tokens": 132,
+        "total_tokens": 394,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                             32s 17:08:33
+{
+  messages: [
+    HumanMessage {
+      "id": "a6cb6a51-82c2-4c7c-8d51-746af09672d3",
+      "content": "What is the temperature outside in celsius?",
+      "additional_kwargs": {},
+      "response_metadata": {}
+    },
+    AIMessage {
+      "id": "868e85bf-fbc6-4e2a-9644-3a8977243a3f",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "The user asks: \"What is the temperature outside in celsius?\" We need to get the user's location via get_user_location, which requires IP. So first get_user_ip, then get_user_location. Then get_weather_for_location. Then respond with temperature in Celsius. Use the tool."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:18:47.082272Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 12436048917,
+        "load_duration": 7076442625,
+        "prompt_eval_count": 274,
+        "prompt_eval_duration": 2172504000,
+        "eval_count": 79,
+        "eval_duration": 3085451752
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_ip",
+          "args": {},
+          "id": "ca394ae8-6ae9-4be1-84b0-148ce084acf2",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 274,
+        "output_tokens": 79,
+        "total_tokens": 353,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "dd02fa6b-38ba-4166-a43b-d2e8e14fedb0",
+      "content": "162.197.127.188",
+      "name": "get_user_ip",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "ca394ae8-6ae9-4be1-84b0-148ce084acf2"
+    },
+    AIMessage {
+      "id": "0ad6dcfe-2af0-4eb9-9c62-a0bceb0b2f9f",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user IP, then get user location, then get weather. The user asked for temperature outside in Celsius. We need to use get_user_ip first. The assistant responded with IP \"162.197.127.188\". That seems like the tool returned the IP. Now we need to get user location. Use get_user_location with ip."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:18:51.702231Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 4432202833,
+        "load_duration": 148229166,
+        "prompt_eval_count": 289,
+        "prompt_eval_duration": 247629458,
+        "eval_count": 103,
+        "eval_duration": 4011915256
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {
+            "ip": "162.197.127.188"
+          },
+          "id": "f60779fa-bad8-43d2-badb-e1c94e317671",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 289,
+        "output_tokens": 103,
+        "total_tokens": 392,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "4efe30c7-2599-4afc-90e7-def36086b1f0",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "f60779fa-bad8-43d2-badb-e1c94e317671"
+    },
+    AIMessage {
+      "id": "5b9ccc53-40e1-4d7b-adce-4af0a25eae1d",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "The user asks: \"What is the temperature outside in celsius?\" According to instructions, we need to first get user location via get_user_location. We already have the IP: 162.197.127.188. The tool returned \"The Colony, Texas\". So we need to get weather for that location. Use get_weather_for_location with city \"The Colony, Texas\"."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:18:56.279012Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 4457798209,
+        "load_duration": 126388125,
+        "prompt_eval_count": 301,
+        "prompt_eval_duration": 210010584,
+        "eval_count": 106,
+        "eval_duration": 4093482710
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "3bab71fc-d125-4b72-a520-b01604fd30e6",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 301,
+        "output_tokens": 106,
+        "total_tokens": 407,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "799d6e5c-9893-4954-9469-11312f436c18",
+      "content": "15.75 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "3bab71fc-d125-4b72-a520-b01604fd30e6"
+    },
+    AIMessage {
+      "id": "f6cffa59-e792-401b-ab2a-b592f2137ee2",
+      "content": "The current temperature outside is **15.75 °C**.",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We have the user asking: \"What is the temperature outside in celsius?\" We have the tool calls: get_user_ip returned IP, get_user_location returned location, get_weather_for_location returned temperature. The last tool call returned 15.75 Celsius. So we should respond with that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:19:00.071418Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3554316500,
+        "load_duration": 132303375,
+        "prompt_eval_count": 313,
+        "prompt_eval_duration": 211303708,
+        "eval_count": 82,
+        "eval_duration": 3187963498
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 313,
+        "output_tokens": 82,
+        "total_tokens": 395,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                             26s 17:19:00
+{
+  messages: [
+    HumanMessage {
+      "id": "49ec3c10-336f-47b9-b4f2-f5ab2e23058d",
+      "content": "What is the temperature outside in celsius?",
+      "additional_kwargs": {},
+      "response_metadata": {}
+    },
+    AIMessage {
+      "id": "aefa43e0-7f1a-4077-905d-53077bca8e99",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user's IP, then location, then weather. Use tools."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:21:19.473172Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3386731000,
+        "load_duration": 131548833,
+        "prompt_eval_count": 292,
+        "prompt_eval_duration": 1831653583,
+        "eval_count": 37,
+        "eval_duration": 1410323668
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_ip",
+          "args": {},
+          "id": "ca8789b5-ba1f-4963-ab62-23fd952a8017",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 292,
+        "output_tokens": 37,
+        "total_tokens": 329,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "b65b9550-3f90-4931-b558-ce9a1a11a3a7",
+      "content": "162.197.127.188",
+      "name": "get_user_ip",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "ca8789b5-ba1f-4963-ab62-23fd952a8017"
+    },
+    AIMessage {
+      "id": "c5f85efb-efc5-4623-8b18-932f6a205a64",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user IP, then location, then weather. We already got IP: 162.197.127.188. Next call get_user_location with that IP."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:21:22.844598Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2983273208,
+        "load_duration": 128060875,
+        "prompt_eval_count": 307,
+        "prompt_eval_duration": 251486958,
+        "eval_count": 67,
+        "eval_duration": 2580815463
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {
+            "ip": "162.197.127.188"
+          },
+          "id": "056ba106-a136-4c71-be50-a00defc0877c",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 307,
+        "output_tokens": 67,
+        "total_tokens": 374,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "04a3ca8d-3a3a-4df6-8ee2-66a29b1e06fc",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "056ba106-a136-4c71-be50-a00defc0877c"
+    },
+    AIMessage {
+      "id": "c85b2df9-a918-406e-a026-8b75743c72f6",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get the temperature for that location. Use get_weather_for_location with city \"The Colony, Texas\"."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:21:25.370078Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2351139542,
+        "load_duration": 126868250,
+        "prompt_eval_count": 319,
+        "prompt_eval_duration": 211386000,
+        "eval_count": 52,
+        "eval_duration": 1995952915
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "70829f92-9cfa-4e49-8775-dc485fbfc2c9",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 319,
+        "output_tokens": 52,
+        "total_tokens": 371,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "71bcd030-2f85-438a-a973-30d1e5b619ac",
+      "content": "15.75 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "70829f92-9cfa-4e49-8775-dc485fbfc2c9"
+    },
+    AIMessage {
+      "id": "81b88d57-4e59-409c-b0ac-cc1fe21da190",
+      "content": "The current temperature outside is **15.75 °C**.",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We have the user asking: \"What is the temperature outside in celsius?\" We have already used the tools: get_user_ip returned 162.197.127.188, get_user_location returned The Colony, Texas, get_weather_for_location returned 15.75 Celsius. So we should respond with that temperature. Probably mention that it's 15.75°C."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:21:29.724775Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 4125371708,
+        "load_duration": 130905500,
+        "prompt_eval_count": 331,
+        "prompt_eval_duration": 212536083,
+        "eval_count": 97,
+        "eval_duration": 3758764539
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 331,
+        "output_tokens": 97,
+        "total_tokens": 428,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                              16s 17:21:29
+undefined
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                                                                       36s 17:41:15
+Structured Response undefined
+Full Response {
+  messages: [
+    HumanMessage {
+      "id": "d2db5fad-8c20-4b00-bd89-195ef1c9fca5",
+      "content": "What is the temperature outside in celsius? Display the response in structured format",
+      "additional_kwargs": {},
+      "response_metadata": {}
+    },
+    AIMessage {
+      "id": "7e6554f5-fade-4ff2-aeee-c84ab343f3c3",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond with structured format. The user asks: \"What is the temperature outside in celsius? Display the response in structured format\". We need to get user IP, then location, then weather. Then output structured format. The instructions say to use get_user_ip, get_user_location, get_weather_for_location. Then output structured format. The tool extract_1 is for extracting structured output from the model's response. But we can just output JSON. The user wants structured format. We can output JSON with fields: temperature_celsius, location, maybe weather_conditions. But we need to use the tool extract_1? The tool extract_1 is for extracting structured output from the model's response. But we can just produce structured output. The instructions: \"Display the response in structured format\". So we can output JSON. Let's do that.\n\nWe need to call get_user_ip first. Then get_user_location with ip. Then get_weather_for_location with city. Then produce structured output. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:42:44.071872Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 9785263667,
+        "load_duration": 127078125,
+        "prompt_eval_count": 334,
+        "prompt_eval_duration": 820159333,
+        "eval_count": 226,
+        "eval_duration": 8790819533
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_ip",
+          "args": {},
+          "id": "a0944fb6-a3cb-4e55-90c8-e5a16eb7e4e0",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 334,
+        "output_tokens": 226,
+        "total_tokens": 560,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "2699b0db-6721-4de0-a2ed-763fd7fcde5a",
+      "content": "162.197.127.188",
+      "name": "get_user_ip",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "a0944fb6-a3cb-4e55-90c8-e5a16eb7e4e0"
+    },
+    AIMessage {
+      "id": "2cf8a3e5-b0e4-43a6-9c5c-df96dda34e5a",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user IP, then location, then weather. The user asked for temperature outside in Celsius. We need to use get_user_ip, then get_user_location, then get_weather_for_location. Then display response in structured format. The structured format likely JSON with fields like \"temperature_celsius\" and maybe \"location\". The user also said \"Display the response in structured format\". We can output JSON. Also we might need to use extract_2 tool? There's a tool extract_2 that extracts structured output from the model's response. But we can just output structured JSON. The instructions: \"If a user asks you for the temperature, first use the get_user_ip tool to find the user's IP address. Then use the get_user_location tool to find the user's location. Then use the get_weather_for_location tool to get the temperature for that location.\" So we need to call get_user_ip, then get_user_location, then get_weather_for_location. We have the IP from the tool call: 162.197.127.188. Next, we need to call get_user_location with ip. Then get_weather_for_location with city. Then output structured. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:42:55.570079Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 11305766500,
+        "load_duration": 132083208,
+        "prompt_eval_count": 349,
+        "prompt_eval_duration": 618741833,
+        "eval_count": 271,
+        "eval_duration": 10501761867
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {
+            "ip": "162.197.127.188"
+          },
+          "id": "56bdff49-9915-4fa0-ad53-013d886afe73",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 349,
+        "output_tokens": 271,
+        "total_tokens": 620,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "861b310d-89a3-4aeb-a4df-7b79abcc68dc",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "56bdff49-9915-4fa0-ad53-013d886afe73"
+    },
+    AIMessage {
+      "id": "654d8a1b-704c-4c98-9c80-f987204acb7c",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get weather for that location. Use get_weather_for_location with city \"The Colony, Texas\"."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:42:58.57599Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2741588583,
+        "load_duration": 115205625,
+        "prompt_eval_count": 361,
+        "prompt_eval_duration": 656986000,
+        "eval_count": 51,
+        "eval_duration": 1956346834
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "0a0b8e8c-d9e9-4bb1-a5e0-6b9e12750202",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 361,
+        "output_tokens": 51,
+        "total_tokens": 412,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "331b3a9e-16f8-4a80-988f-2cba549756e1",
+      "content": "15.65 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "0a0b8e8c-d9e9-4bb1-a5e0-6b9e12750202"
+    },
+    AIMessage {
+      "id": "d8c650d3-4fb8-4049-aa80-b2c7ef5ecdc2",
+      "content": "```json\n{\n  \"temperature_celsius\": 15.65\n}\n```",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond in structured format. The instructions: \"Display the response in structured format\". The tool extract_4 expects punny_response and weather_conditions. But we can just output JSON? The user asked: \"What is the temperature outside in celsius? Display the response in structured format\". We have the temperature 15.65 Celsius. We should output structured format. Could be JSON with fields: temperature_celsius. Let's output:\n\n{\n  \"temperature_celsius\": 15.65\n}\n\nBut maybe they want punny_response? The tool extract_4 expects punny_response and weather_conditions. But the user didn't ask for punny. The tool is for extracting structured output from the model's response. We can just output JSON. The instruction: \"Display the response in structured format\". So we can output JSON. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-14T23:43:07.288831Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 8566702333,
+        "load_duration": 130067083,
+        "prompt_eval_count": 373,
+        "prompt_eval_duration": 676946166,
+        "eval_count": 199,
+        "eval_duration": 7718337090
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 373,
+        "output_tokens": 199,
+        "total_tokens": 572,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                                                                       34s 17:43:07
+Full Response AIMessage {
+  "id": "e04b541d-00d7-4aad-9585-56908d112cbb",
+  "content": "```json\n{\n  \"location\": \"The Colony, Texas\",\n  \"temperature_celsius\": 15.42\n}\n```",
+  "name": "Weather Man",
+  "additional_kwargs": {
+    "reasoning_content": "We need to respond in structured format. The instructions: \"Display the response in structured format\". We have a tool extract_4 that extracts structured output from the model's response. But we can just output JSON? The instruction says \"structured format\". Likely we need to output JSON with fields: punny_response? Wait the extract_4 tool expects punny_response and weather_conditions. But the user didn't ask for punny response. The tool extract_4 is for extracting structured output from the model's response. But we can just output JSON with temperature. The user asked: \"What is the temperature outside in celsius? Display the response in structured format\". So we should output something like:\n\n{\n  \"temperature_celsius\": 15.42\n}\n\nBut maybe include location. Let's include location and temperature. The tool extract_4 expects punny_response and weather_conditions. But we can ignore that. The user didn't ask for punny. So we can output JSON.\n\nThus final answer: JSON with location and temperature."
+  },
+  "response_metadata": {
+    "model_provider": "ollama",
+    "model": "gpt-oss:20b",
+    "created_at": "2026-02-15T00:30:17.52723Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 10377110583,
+    "load_duration": 129491125,
+    "prompt_eval_count": 373,
+    "prompt_eval_duration": 678804375,
+    "eval_count": 245,
+    "eval_duration": 9514239668
+  },
+  "tool_calls": [],
+  "invalid_tool_calls": [],
+  "usage_metadata": {
+    "input_tokens": 373,
+    "output_tokens": 245,
+    "total_tokens": 618,
+    "input_token_details": {},
+    "output_token_details": {}
+  }
+}
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                                                                       45s 18:30:17
+file:///Users/siddharthkashyap/Development/gemniAI/src/OllamaAILangChain.ts:121
+console.log('Structured Response', response1.structuredResponse);
+console.log('Full Response', response1.messages.)
+                                                ^
+//console.log(response1.structuredResponse.punny_response)
+
+SyntaxError: Expected ident
+    at parseTypeScript (node:internal/modules/typescript:72:36)
+    at processTypeScriptCode (node:internal/modules/typescript:146:42)
+    at stripTypeScriptModuleTypes (node:internal/modules/typescript:209:22)
+    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:660:29)
+    at ModuleLoader.#translate (node:internal/modules/esm/loader:541:20)
+    at afterLoad (node:internal/modules/esm/loader:594:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:599:12)
+    at ModuleLoader.#createModuleJob (node:internal/modules/esm/loader:623:36)
+    at ModuleLoader.#getJobFromResolveResult (node:internal/modules/esm/loader:329:34)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:294:41) {
+  code: 'ERR_INVALID_TYPESCRIPT_SYNTAX'
+}
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                                                                           18:38:49
+Structured Response undefined
+Full Response {
+  messages: [
+    HumanMessage {
+      "id": "83190b38-6567-4dc0-b1ee-b8c19f6d904d",
+      "content": "What is the temperature outside in celsius? Display the response in structured format",
+      "additional_kwargs": {},
+      "response_metadata": {}
+    },
+    AIMessage {
+      "id": "a29df66a-cede-4e0e-ba44-c7fee0d7162e",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond with structured format. The user asks: \"What is the temperature outside in celsius? Display the response in structured format\". We need to get user IP, then location, then weather. Then output structured format. The instructions say to use get_user_ip, get_user_location, get_weather_for_location. Then output structured format. The tool extract_1 is for extracting structured output from the model's response. But we can just output JSON. The user wants structured format. We can output JSON with fields: punny_response? Wait the extract_1 tool expects punny_response and weather_conditions. But that's for extraction. We don't need to use that. We just need to output structured format. Probably JSON with temperature. Let's do that.\n\nWe need to call get_user_ip first."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:39:33.174375Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 16864086542,
+        "load_duration": 7151932875,
+        "prompt_eval_count": 334,
+        "prompt_eval_duration": 2415208958,
+        "eval_count": 183,
+        "eval_duration": 7166236285
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_ip",
+          "args": {},
+          "id": "72026783-314b-4e3e-8176-7e0ad147b31a",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 334,
+        "output_tokens": 183,
+        "total_tokens": 517,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "b1f57f06-f755-4d97-a261-a063008c4531",
+      "content": "162.197.127.188",
+      "name": "get_user_ip",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "72026783-314b-4e3e-8176-7e0ad147b31a"
+    },
+    AIMessage {
+      "id": "f879ee75-9225-4d0d-bdc9-6049cc2f10f9",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user IP, then location, then weather. The user asked for temperature outside in Celsius. We need to respond in structured format. The instructions say: \"If a user asks you for the temperature, first use the get_user_ip tool to find the user's IP address. Then use the get_user_location tool to find the user's location. Then use the get_weather_for_location tool to get the temperature for that location.\" So we need to call get_user_ip, then get_user_location, then get_weather_for_location. The user wants structured format. We can use the extract_1 tool? The tool extract_1 expects punny_response and weather_conditions. But we don't need punny_response. The instructions didn't mention punny_response. But maybe we can just output JSON. The user says \"Display the response in structured format\". That could be JSON. We can just output JSON with temperature. But we need to use the tool to get the weather. So we need to call get_user_ip first. The assistant responded with IP. We need to call get_user_location with that IP. Then call get_weather_for_location with city. Then produce structured output. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:39:43.994812Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 10610148125,
+        "load_duration": 160789125,
+        "prompt_eval_count": 349,
+        "prompt_eval_duration": 242696875,
+        "eval_count": 261,
+        "eval_duration": 10150413381
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_ip",
+          "args": {},
+          "id": "26b98267-1db1-4efc-aa80-4f1a2c85bf11",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 349,
+        "output_tokens": 261,
+        "total_tokens": 610,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "cfecfd60-acde-41d4-b502-33ba392d4822",
+      "content": "162.197.127.188",
+      "name": "get_user_ip",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "26b98267-1db1-4efc-aa80-4f1a2c85bf11"
+    },
+    AIMessage {
+      "id": "d864be87-c7c0-4c28-bbf8-6a40ac0cf883",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user IP, then location, then weather. The user asked for temperature outside in Celsius, display response in structured format. We need to use get_user_ip, then get_user_location, then get_weather_for_location. Then produce structured output. The tool calls: first get_user_ip. The assistant responded with IP \"162.197.127.188\". That seems to be the IP. Next we need to call get_user_location with that IP. Then get_weather_for_location with city from location. Then produce structured output. The user wants structured format. We can output JSON with fields: temperature_celsius, city, maybe timestamp. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:39:51.297461Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 6935774125,
+        "load_duration": 127996458,
+        "prompt_eval_count": 364,
+        "prompt_eval_duration": 246544416,
+        "eval_count": 166,
+        "eval_duration": 6522730921
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {
+            "ip": "162.197.127.188"
+          },
+          "id": "2bebb84e-6721-4622-bc0b-3355e6d9e6b4",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 364,
+        "output_tokens": 166,
+        "total_tokens": 530,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "39b268ff-3061-435d-97cb-ebb7a2884a0f",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "2bebb84e-6721-4622-bc0b-3355e6d9e6b4"
+    },
+    AIMessage {
+      "id": "da6eb26f-1674-4ff0-a080-f6556572418b",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to provide temperature in Celsius. We have IP, location. Now need to get weather. Use get_weather_for_location with city \"The Colony, Texas\"."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:39:54.475635Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2754788000,
+        "load_duration": 128341708,
+        "prompt_eval_count": 376,
+        "prompt_eval_duration": 216287500,
+        "eval_count": 62,
+        "eval_duration": 2393798167
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "2a2e8054-a9de-4316-9d72-ee684b68588a",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 376,
+        "output_tokens": 62,
+        "total_tokens": 438,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "133ef966-4d45-4d46-90cd-f62fcb9e42f9",
+      "content": "15.38 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "2a2e8054-a9de-4316-9d72-ee684b68588a"
+    },
+    AIMessage {
+      "id": "eb13883b-0fed-43b1-afe1-6f7d71765f85",
+      "content": "```json\n{\n  \"temperature_celsius\": 15.38\n}\n```",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond with structured format. The user asked: \"What is the temperature outside in celsius? Display the response in structured format\". We have the temperature: 15.38 Celsius. We need to output structured format. The tool extract_1 expects punny_response and weather_conditions. But the user didn't ask for punny response. The instruction says \"Display the response in structured format\". We can output JSON with fields like \"temperature_celsius\". But the tool extract_1 expects punny_response and weather_conditions. But we can just output structured JSON. The instruction didn't mention using extract_1. But we can use it to produce structured output. The tool extract_1 expects punny_response and weather_conditions. We can provide punny_response maybe \"It's a cool day!\" and weather_conditions \"15.38 Celsius\". But the user didn't ask for punny. But we can still produce structured output. The best is to output JSON: {\"temperature_celsius\": 15.38}. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:40:04.250879Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 9469461708,
+        "load_duration": 131846375,
+        "prompt_eval_count": 388,
+        "prompt_eval_duration": 205163292,
+        "eval_count": 234,
+        "eval_duration": 9085079046
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 388,
+        "output_tokens": 234,
+        "total_tokens": 622,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+
+
+************************************************
+
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {
+            "ip": "162.197.127.188"
+          },
+          "id": "2bebb84e-6721-4622-bc0b-3355e6d9e6b4",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 364,
+        "output_tokens": 166,
+        "total_tokens": 530,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "39b268ff-3061-435d-97cb-ebb7a2884a0f",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "2bebb84e-6721-4622-bc0b-3355e6d9e6b4"
+    },
+    AIMessage {
+      "id": "da6eb26f-1674-4ff0-a080-f6556572418b",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to provide temperature in Celsius. We have IP, location. Now need to get weather. Use get_weather_for_location with city \"The Colony, Texas\"."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:39:54.475635Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2754788000,
+        "load_duration": 128341708,
+        "prompt_eval_count": 376,
+        "prompt_eval_duration": 216287500,
+        "eval_count": 62,
+        "eval_duration": 2393798167
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "2a2e8054-a9de-4316-9d72-ee684b68588a",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 376,
+        "output_tokens": 62,
+        "total_tokens": 438,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "133ef966-4d45-4d46-90cd-f62fcb9e42f9",
+      "content": "15.38 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "2a2e8054-a9de-4316-9d72-ee684b68588a"
+    },
+    AIMessage {
+      "id": "eb13883b-0fed-43b1-afe1-6f7d71765f85",
+      "content": "```json\n{\n  \"temperature_celsius\": 15.38\n}\n```",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond with structured format. The user asked: \"What is the temperature outside in celsius? Display the response in structured format\". We have the temperature: 15.38 Celsius. We need to output structured format. The tool extract_1 expects punny_response and weather_conditions. But the user didn't ask for punny response. The instruction says \"Display the response in structured format\". We can output JSON with fields like \"temperature_celsius\". But the tool extract_1 expects punny_response and weather_conditions. But we can just output structured JSON. The instruction didn't mention using extract_1. But we can use it to produce structured output. The tool extract_1 expects punny_response and weather_conditions. We can provide punny_response maybe \"It's a cool day!\" and weather_conditions \"15.38 Celsius\". But the user didn't ask for punny. But we can still produce structured output. The best is to output JSON: {\"temperature_celsius\": 15.38}. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T00:40:04.250879Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 9469461708,
+        "load_duration": 131846375,
+        "prompt_eval_count": 388,
+        "prompt_eval_duration": 205163292,
+        "eval_count": 234,
+        "eval_duration": 9085079046
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 388,
+        "output_tokens": 234,
+        "total_tokens": 622,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+~/Development/gemniAI >                                                                                                                                   48s 18:40:04
+ *  History restored 
+
+~/Development/gemniAI > ts-node src/OllamaAILangChain.ts                                                                                                                                                 07:51:44
+Structured Response undefined
+Full Response {
+  messages: [
+    HumanMessage {
+      "id": "bf1308ea-c908-42e1-9b22-f084b1cfe114",
+      "content": "What is the temperature outside in celsius? Display the response in structured format",
+      "additional_kwargs": {},
+      "response_metadata": {}
+    },
+    AIMessage {
+      "id": "d99231a5-c293-4208-af63-65e76c0afdb2",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond with structured format. The user asks for temperature outside in Celsius. We need to get user IP, then location, then weather. We need to use tools. Then produce structured output. The instructions say to use get_user_ip, get_user_location, get_weather_for_location. Then display response in structured format. The tool extract_1 is for extracting structured output from the model's response. But we can just produce structured JSON. The user wants structured format. We can produce JSON with fields: temperature_celsius, location, maybe timestamp. Let's do that.\n\nWe need to call get_user_ip first. Then get_user_location with ip. Then get_weather_for_location with city. Then produce structured output. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T13:53:22.152844Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 17624353667,
+        "load_duration": 7398943458,
+        "prompt_eval_count": 334,
+        "prompt_eval_duration": 2417939708,
+        "eval_count": 170,
+        "eval_duration": 7674380458
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_ip",
+          "args": {},
+          "id": "58238efb-3c15-44ce-be68-c9d1c9f2058c",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 334,
+        "output_tokens": 170,
+        "total_tokens": 504,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "78730329-3d51-4128-90e9-b011a189a840",
+      "content": "162.197.127.188",
+      "name": "get_user_ip",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "58238efb-3c15-44ce-be68-c9d1c9f2058c"
+    },
+    AIMessage {
+      "id": "74b44383-764f-4c98-a819-19f160d9ea65",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to get user IP, then location, then weather. We have IP from tool: 162.197.127.188. Next call get_user_location with that IP."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T13:53:25.773515Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 3378559375,
+        "load_duration": 130852125,
+        "prompt_eval_count": 349,
+        "prompt_eval_duration": 242714250,
+        "eval_count": 68,
+        "eval_duration": 2984685958
+      },
+      "tool_calls": [
+        {
+          "name": "get_user_location",
+          "args": {
+            "ip": "162.197.127.188"
+          },
+          "id": "2e32499a-ccf0-4f69-a62d-91db683586c9",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 349,
+        "output_tokens": 68,
+        "total_tokens": 417,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "e25f5f1a-b14a-4a1e-9063-3ff6ad71c193",
+      "content": "The Colony, Texas",
+      "name": "get_user_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "2e32499a-ccf0-4f69-a62d-91db683586c9"
+    },
+    AIMessage {
+      "id": "46e75faf-ad54-4680-a588-ba34df963ca0",
+      "content": "",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond with structured format. The user asked: \"What is the temperature outside in celsius? Display the response in structured format\". We have to use the tools: get_user_ip, get_user_location, get_weather_for_location. We already got IP: 162.197.127.188. Then location: The Colony, Texas. Now we need to get weather for that location. We need to call get_weather_for_location with city \"The Colony, Texas\". Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T13:53:31.911639Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 5992268750,
+        "load_duration": 124337542,
+        "prompt_eval_count": 361,
+        "prompt_eval_duration": 217359709,
+        "eval_count": 130,
+        "eval_duration": 5620651420
+      },
+      "tool_calls": [
+        {
+          "name": "get_weather_for_location",
+          "args": {
+            "city": "The Colony, Texas"
+          },
+          "id": "1c702012-85b3-44ba-944b-cc76614e9406",
+          "type": "tool_call"
+        }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 361,
+        "output_tokens": 130,
+        "total_tokens": 491,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    ToolMessage {
+      "id": "afbfa1d3-79bd-477f-8331-2a75eacc3417",
+      "content": "13.66 Celsius",
+      "name": "get_weather_for_location",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "tool_call_id": "1c702012-85b3-44ba-944b-cc76614e9406"
+    },
+    AIMessage {
+      "id": "11384400-c35d-471d-ae78-409cc34273f3",
+      "content": "```json\n{\n  \"location\": \"The Colony, Texas\",\n  \"temperature_celsius\": 13.66,\n  \"unit\": \"Celsius\"\n}\n```",
+      "name": "Weather Man",
+      "additional_kwargs": {
+        "reasoning_content": "We need to respond in structured format. The instruction says: \"Display the response in structured format\". The tool extract_1 expects punny_response and weather_conditions. But we can just output JSON? The instruction: \"Display the response in structured format\". Likely we need to output JSON with fields. The tool extract_1 is for extracting structured output from the model's response. But we can just output JSON. The user asked: \"What is the temperature outside in celsius? Display the response in structured format\". So we should output something like:\n\n{\n  \"temperature_celsius\": 13.66,\n  \"location\": \"The Colony, Texas\",\n  \"unit\": \"Celsius\"\n}\n\nBut maybe they want punny_response? The tool extract_1 expects punny_response and weather_conditions. But the user didn't ask for punny. So we can just output structured JSON. The instruction: \"Display the response in structured format\". So we can output JSON. Let's do that."
+      },
+      "response_metadata": {
+        "model_provider": "ollama",
+        "model": "gpt-oss:20b",
+        "created_at": "2026-02-15T13:53:43.223064Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 11066575667,
+        "load_duration": 118511875,
+        "prompt_eval_count": 373,
+        "prompt_eval_duration": 214764417,
+        "eval_count": 247,
+        "eval_duration": 10674147918
+      },
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 373,
+        "output_tokens": 247,
+        "total_tokens": 620,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ]
+}
+~/Development/gemniAI >                                                                                                                                                                              39s 07:53:43

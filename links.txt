@@ -1,0 +1,10 @@
+https://api.openweathermap.org/data/2.5/weather?q=SF&appid=6793731f5b5aa354c422acd15a89e2a1
+
+http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=6793731f5b5aa354c422acd15a89e2a1
+
+
+
+https://api.openweathermap.org/data/2.5/weather?q=${*cityName*}&appid=${*API_key*}&units=metric
+
+
+"https://api.ipdata.co?api-key=4f7982d09207f5a03aa8eedf48ee6a165586c1b8b57f59c13345d443"
