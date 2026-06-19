@@ -64,8 +64,7 @@ const model2 = new ChatOpenAI({
     model:"ai/smollm2",
     configuration: {
         baseURL: "http://localhost:12434/engines/v1",
-        apiKey: "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",
-    },
+        apiKey: "some key"
 }).bindTools([getUserLocation, getWeather]);
 
 
@@ -95,7 +94,7 @@ const config = {
     context: { user_id: "1" },
     configuration: {
         baseURL: "http://localhost:12434/engines/v1",
-        apiKey: "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",
+        apiKey: "some key"
     },
 };
 const response = await run(agent, 'What is the weather in New York?', {maxTurns: 5});
