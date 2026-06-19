@@ -5,7 +5,6 @@ import {ChatOpenAI} from "@langchain/openai";
 import { Agent, run } from "@openai/agents";
 
 
-//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
 
 
 // Define system prompt
